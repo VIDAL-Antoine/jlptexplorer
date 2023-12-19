@@ -17,11 +17,13 @@ const client = new MongoClient(uri, {
   }
 });
 
-app.get('/api/data', async (req, res) => {
+app.get('/api/data/:jlptLevel', async (req, res) => {
+  const { jlptLevel } = req.params;
+  
   try {
     await client.connect();
     const database = client.db("game_gramexplorer");
-    const collection = database.collection("grammar_points_n5");
+    const collection = database.collection(`grammar_points_${jlptLevel.toLowerCase()}`);
     const documents = await collection.find({}).toArray();
     res.json(documents);
   } catch (error) {
