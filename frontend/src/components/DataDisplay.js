@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const DataDisplay = ({ jlptLevel }) => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,6 +13,8 @@ const DataDisplay = ({ jlptLevel }) => {
         setData(jsonData);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -20,13 +23,17 @@ const DataDisplay = ({ jlptLevel }) => {
 
   return (
     <div>
-      {data.map(item => (
-        <div key={item._id}>
-          <Link to={`/${jlptLevel}/${item._id}`}>
-            <h2>{item.title}</h2>
-          </Link>
-        </div>
-      ))}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        data.map(item => (
+          <div key={item._id}>
+            <Link to={`/${jlptLevel}/${item._id}`}>
+              <h2>{item.title}</h2>
+            </Link>
+          </div>
+        ))
+      )}
     </div>
   );
 };
