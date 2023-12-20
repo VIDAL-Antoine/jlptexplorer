@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DataDisplay = ({ jlptLevel }) => {
   const [data, setData] = useState([]);
@@ -22,17 +23,21 @@ const DataDisplay = ({ jlptLevel }) => {
   }, [jlptLevel]);
 
   return (
-    <div>
+    <div className="container mt-4">
+      <h1 className="mb-4">Grammar Points - JLPT Level {jlptLevel.toUpperCase()}</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        data.map(item => (
-          <div key={item._id}>
-            <Link to={`/${jlptLevel}/${item._id}`}>
-              <h2>{item.title}</h2>
+        <div className="list-group">
+          {data.map(item => (
+            <Link to={`/${jlptLevel}/${item._id}`} key={item._id} className="list-group-item list-group-item-action">
+              <div className="d-flex w-100 justify-content-between">
+                <h5 className="mb-1">{item.title}</h5>
+                <h7>{item.englishTranslation}</h7>
+              </div>
             </Link>
-          </div>
-        ))
+          ))}
+        </div>
       )}
     </div>
   );

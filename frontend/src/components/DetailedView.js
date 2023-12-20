@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DetailedView = () => {
   const { id, jlptLevel } = useParams();
@@ -24,17 +25,23 @@ const DetailedView = () => {
   }
 
   return (
-    <div>
-      <h2>{grammarPoint.title}</h2>
-      <p>{grammarPoint.jlptLevel}</p>
+    <div className="container mt-4">
+      <h2 className="mb-3">{grammarPoint.title}</h2>
+      <p>JLPT Level: {grammarPoint.jlptLevel}</p>
+      <p className="mb-4">English Translation: {grammarPoint.englishTranslation}</p>
+
+      <h3>Examples</h3>
       {grammarPoint.examples.map((example, index) => (
-            <div key={index}>
-              <p>Sentence: {example.sentence}</p>
-              <p>Source: {example.source}</p>
-              <p>Video URL: <a href={example.videoURL} target="_blank" rel="noopener noreferrer">{example.videoURL}</a></p>
-            </div>
-          ))}
-      
+        <div key={index} className="card mb-3">
+          <div className="card-body">
+            <p className="card-text">Sentence: {example.sentence}</p>
+            <p className="card-text">Source: {example.source}</p>
+            <p className="card-text">
+              Video URL: <a href={example.videoURL} target="_blank" rel="noopener noreferrer">{example.videoURL}</a>
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
