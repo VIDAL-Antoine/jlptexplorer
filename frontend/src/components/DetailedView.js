@@ -41,7 +41,7 @@ const DetailedView = () => {
           <div className="card-body">
             <p className="card-text">Sentence: {example.sentence}</p>
             <p className="card-text">Source: {example.source}</p>
-            <p className="card-text">
+            <p className="card-text text-center">
               {/* Video URL: <a href={example.videoURL} target="_blank" rel="noopener noreferrer">{example.videoURL}</a> */}
               <iframe
                 width="560"
