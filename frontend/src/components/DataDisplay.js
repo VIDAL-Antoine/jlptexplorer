@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DataDisplay = ({ jlptLevel }) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,8 +13,6 @@ const DataDisplay = ({ jlptLevel }) => {
         setData(jsonData);
       } catch (error) {
         console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -24,9 +21,13 @@ const DataDisplay = ({ jlptLevel }) => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-4">Grammar Points - JLPT Level {jlptLevel.toUpperCase()}</h1>
-      {loading ? (
-        <p>Loading...</p>
+      <h1 className="mb-4">Grammar Points - JLPT Level {jlptLevel === "nu" ? "Unclassified" : jlptLevel.toUpperCase()}</h1>
+      {data.length === 0 ? // if data is being fetched
+      (
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="spinner-border my-5" role="status">
+          </div>
+        </div>
       ) : (
         <div className="list-group">
           {data.map(item => (

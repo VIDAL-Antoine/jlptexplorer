@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/n3" element={<DataDisplay jlptLevel={jlptLevel} />} />
         <Route path="/n2" element={<DataDisplay jlptLevel={jlptLevel} />} />
         <Route path="/n1" element={<DataDisplay jlptLevel={jlptLevel} />} />
+        <Route path="/nu" element={<DataDisplay jlptLevel={jlptLevel} />} />
         <Route path="/:jlptLevel/:id" element={<DetailedView />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

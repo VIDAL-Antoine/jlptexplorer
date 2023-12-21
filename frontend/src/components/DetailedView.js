@@ -21,7 +21,12 @@ const DetailedView = () => {
   }, [jlptLevel, id]);
 
   if (!grammarPoint) {
-    return <div>Loading...</div>;
+    return (
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="spinner-border my-5" role="status">
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -37,7 +42,15 @@ const DetailedView = () => {
             <p className="card-text">Sentence: {example.sentence}</p>
             <p className="card-text">Source: {example.source}</p>
             <p className="card-text">
-              Video URL: <a href={example.videoURL} target="_blank" rel="noopener noreferrer">{example.videoURL}</a>
+              {/* Video URL: <a href={example.videoURL} target="_blank" rel="noopener noreferrer">{example.videoURL}</a> */}
+              <iframe
+                width="560"
+                height="315"
+                src={example.videoURL} // https://www.youtube.com/embed/eI4an8aSsgw works
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </p>
           </div>
         </div>
