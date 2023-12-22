@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card, CardBody, CardTitle, Table } from 'reactstrap';
+import styled from 'styled-components';
+
+const DataDisplayWrapper = styled.div`
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+`;
 
 const DataDisplay = ({ jlptLevel }) => {
   const [data, setData] = useState([]);
@@ -20,8 +29,7 @@ const DataDisplay = ({ jlptLevel }) => {
   }, [jlptLevel]);
 
   return (
-    <div className="container mt-4">
-      <h1 className="mb-4">Grammar Points - JLPT Level {jlptLevel === "nu" ? "Unclassified" : jlptLevel.toUpperCase()}</h1>
+    <div className="m-4">
       {data.length === 0 ? // if data is being fetched
       (
         <div class="d-flex justify-content-center align-items-center">
@@ -29,16 +37,29 @@ const DataDisplay = ({ jlptLevel }) => {
           </div>
         </div>
       ) : (
-        <div className="list-group">
-          {data.map(item => (
-            <Link to={`/${jlptLevel}/${item._id}`} key={item._id} className="list-group-item list-group-item-action">
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{item.title}</h5>
-                <h7>{item.englishTranslation}</h7>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <DataDisplayWrapper>
+        <Card>
+        <CardBody>
+          <CardTitle tag="h2" className='text-center'>Grammar Points - JLPT Level {jlptLevel === "nu" ? "Unclassified" : jlptLevel.toUpperCase()}</CardTitle>
+          <Table className="no-wrap mt-3 align-middle" responsive borderless>
+          <thead>
+            <tr>
+              <th>日本語</th>
+              <th style={{ textAlign: 'right' }}>English</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item) => 
+                <tr key={item._id} className="border-top">
+                  <td><Link to={`/${jlptLevel}/${item._id}`} className="list-group-item list-group-item-action">{item.title}</Link></td>
+                  <td style={{ textAlign: 'right' }}>{item.englishTranslation}</td>
+                </tr>
+              )}
+            </tbody>
+        </Table>
+        </CardBody>
+      </Card>
+      </DataDisplayWrapper>
       )}
     </div>
   );
