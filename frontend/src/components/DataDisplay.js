@@ -32,12 +32,11 @@ const DataDisplay = ({ jlptLevel }) => {
     <div className="m-4">
       {data.length === 0 ? // if data is being fetched
       (
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="spinner-border my-5" role="status">
+        <div className="d-flex justify-content-center align-items-center">
+          <div className="spinner-border my-5" role="status">
           </div>
         </div>
       ) : (
-        <DataDisplayWrapper>
         <Card>
         <CardBody>
           <CardTitle tag="h2" className='text-center'>Grammar Points - JLPT Level {jlptLevel === "nu" ? "Unclassified" : jlptLevel.toUpperCase()}</CardTitle>
@@ -59,7 +58,6 @@ const DataDisplay = ({ jlptLevel }) => {
         </Table>
         </CardBody>
       </Card>
-      </DataDisplayWrapper>
       )}
     </div>
   );

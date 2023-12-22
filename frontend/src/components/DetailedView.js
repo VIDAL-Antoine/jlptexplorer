@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from 'styled-components';
+
+const DetailedViewWrapper = styled.div`
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+`;
 
 const DetailedView = () => {
   const { id, jlptLevel } = useParams();
@@ -22,8 +30,8 @@ const DetailedView = () => {
 
   if (!grammarPoint) {
     return (
-      <div class="d-flex justify-content-center align-items-center">
-        <div class="spinner-border my-5" role="status">
+      <div className="d-flex justify-content-center align-items-center">
+        <div className="spinner-border my-5" role="status">
         </div>
       </div>
     )
@@ -31,11 +39,25 @@ const DetailedView = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-3">{grammarPoint.title}</h2>
-      <p>JLPT Level: {grammarPoint.jlptLevel}</p>
-      <p className="mb-4">English Translation: {grammarPoint.englishTranslation}</p>
 
-      <h3>Examples</h3>
+
+      <DetailedViewWrapper>
+      <header className="text-center py-3">
+        <h1><i className="bi bi-book-fill" style={{ color: '#000000' }}/> {grammarPoint.title}</h1>
+      </header>
+      </DetailedViewWrapper>
+
+      <div style={{ display: 'flex' }}>
+      <DetailedViewWrapper style={{ flex: 1 }}>
+        <i className="bi bi-translate" style={{ color: '#0000ff' }}/> {grammarPoint.englishTranslation}
+      </DetailedViewWrapper>
+      <DetailedViewWrapper>
+        <i className="bi bi-graph-up-arrow" style={{ color: '#00ff00' }}/> {grammarPoint.jlptLevel}
+      </DetailedViewWrapper>
+      </div>
+
+      <DetailedViewWrapper>
+      <h3><i className='bi bi-chat-dots' style={{ color: '#ff9800' }} /> Examples</h3>
       {grammarPoint.examples.map((example, index) => (
         <div key={index} className="card mb-3">
           <div className="card-body">
@@ -55,6 +77,7 @@ const DetailedView = () => {
           </div>
         </div>
       ))}
+      </DetailedViewWrapper>
     </div>
   );
 };

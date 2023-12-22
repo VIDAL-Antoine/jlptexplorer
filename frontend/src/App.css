@@ -2,8 +2,9 @@
   text-align: center;
 }
 
-body {
-  background-color:#eef5f9;
+.app-container {
+  background-color: #eef5f9;
+  min-height: 100vh;
 }
 
 .App-logo {
