@@ -5,7 +5,8 @@ import { Card, CardBody, CardTitle, Table } from 'reactstrap';
 import styled from 'styled-components';
 
 const DataDisplayWrapper = styled.div`
-  border-radius: 8px;
+  background-color: white;
+  border-radius: 10px;
   padding: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
@@ -29,7 +30,7 @@ const DataDisplay = ({ jlptLevel }) => {
   }, [jlptLevel]);
 
   return (
-    <div className="m-4">
+  <DataDisplayWrapper className="m-3">
       {data.length === 0 ? // if data is being fetched
       (
         <div className="d-flex justify-content-center align-items-center">
@@ -37,7 +38,7 @@ const DataDisplay = ({ jlptLevel }) => {
           </div>
         </div>
       ) : (
-        <Card>
+        <Card style={{ border: 'none'}}>
         <CardBody>
           <CardTitle tag="h2" className='text-center'>Grammar Points - JLPT Level {jlptLevel === "nu" ? "Unclassified" : jlptLevel.toUpperCase()}</CardTitle>
           <Table className="no-wrap mt-3 align-middle" responsive borderless>
@@ -59,7 +60,7 @@ const DataDisplay = ({ jlptLevel }) => {
         </CardBody>
       </Card>
       )}
-    </div>
+    </DataDisplayWrapper>
   );
 };
 

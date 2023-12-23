@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 import styled from 'styled-components';
 
 const DetailedViewWrapper = styled.div`
-  border-radius: 8px;
+  background-color: white;
+  border-radius: 10px;
   padding: 16px;
+  margin-bottom: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
 `;
@@ -48,7 +51,7 @@ const DetailedView = () => {
       </DetailedViewWrapper>
 
       <div style={{ display: 'flex' }}>
-      <DetailedViewWrapper style={{ flex: 1 }}>
+      <DetailedViewWrapper style={{ flex: 1, marginRight: '30px' }}>
         <i className="bi bi-translate" style={{ color: '#0000ff' }}/> {grammarPoint.englishTranslation}
       </DetailedViewWrapper>
       <DetailedViewWrapper>
