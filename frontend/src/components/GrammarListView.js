@@ -32,37 +32,39 @@ const GrammarListView = () => {
   }, [jlptLevel]);
 
   return (
-  <GrammarListViewWrapper className="m-3">
-      {data.length === 0 ? // if data is being fetched
-      (
+    <div>
+    {data.length === 0 ? // if data is being fetched
+    (
         <div className="d-flex justify-content-center align-items-center">
           <div className="spinner-border my-5" role="status">
           </div>
         </div>
-      ) : (
-        <Card style={{ border: 'none'}}>
+    ) : (
+      <GrammarListViewWrapper className="m-3">
+      <Card style={{ border: 'none'}}>
         <CardBody>
           <CardTitle tag="h2" className='text-center'>Grammar Points - JLPT Level {jlptLevel === "nu" ? "Unclassified" : jlptLevel.toUpperCase()}</CardTitle>
           <Table className="no-wrap mt-3 align-middle" responsive borderless>
-          <thead>
-            <tr>
-              <th>日本語</th>
-              <th style={{ textAlign: 'right' }}>English</th>
-            </tr>
-          </thead>
-          <tbody>
+            <thead>
+              <tr>
+                <th>日本語</th>
+                <th style={{ textAlign: 'right' }}>English</th>
+              </tr>
+            </thead>
+            <tbody>
             {data.map((item) => 
                 <tr key={item._id} className="border-top">
                   <td><Link to={`/${jlptLevel}/${item._id}`} className="list-group-item list-group-item-action">{item.title}</Link></td>
                   <td style={{ textAlign: 'right' }}>{item.englishTranslation}</td>
                 </tr>
-              )}
+            )}
             </tbody>
-        </Table>
+          </Table>
         </CardBody>
       </Card>
-      )}
-    </GrammarListViewWrapper>
+      </GrammarListViewWrapper>
+    )}
+    </div>
   );
 };
 
