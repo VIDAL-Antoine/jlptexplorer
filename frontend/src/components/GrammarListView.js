@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, CardBody, CardTitle, Table } from 'reactstrap';
 import styled from 'styled-components';
 
-const DataDisplayWrapper = styled.div`
+const GrammarListViewWrapper = styled.div`
   background-color: white;
   border-radius: 10px;
   padding: 16px;
@@ -12,7 +13,8 @@ const DataDisplayWrapper = styled.div`
   transition: box-shadow 0.3s ease;
 `;
 
-const DataDisplay = ({ jlptLevel }) => {
+const GrammarListView = () => {
+  const { jlptLevel } = useParams();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const DataDisplay = ({ jlptLevel }) => {
   }, [jlptLevel]);
 
   return (
-  <DataDisplayWrapper className="m-3">
+  <GrammarListViewWrapper className="m-3">
       {data.length === 0 ? // if data is being fetched
       (
         <div className="d-flex justify-content-center align-items-center">
@@ -60,8 +62,8 @@ const DataDisplay = ({ jlptLevel }) => {
         </CardBody>
       </Card>
       )}
-    </DataDisplayWrapper>
+    </GrammarListViewWrapper>
   );
 };
 
-export default DataDisplay;
+export default GrammarListView;
