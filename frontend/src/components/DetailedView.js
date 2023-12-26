@@ -65,7 +65,7 @@ const DetailedView = () => {
             <span className='ms-3'>Examples</span>
           </h3>
           {grammarPoint.examples.map((example, index) => (
-            <div key={index} className="card mb-3">
+            <div key={index} className="card mb-4">
               <div className="card-body">
                 <p className="card-text">Sentence: {example.sentence}</p>
                 <p className="card-text">Source: {example.source}</p>
