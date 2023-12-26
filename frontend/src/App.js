@@ -4,9 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GrammarListView from './components/GrammarListView';
 import DetailedView from './components/DetailedView';
 import Header from './components/Header';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import Home from './components/Home';
-import Contact from './components/Contact';
 
 const App = () => {
 
@@ -19,10 +18,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/:jlptLevel" element={<GrammarListView />} />
         <Route path="/:jlptLevel/:id" element={<DetailedView />} />
-        <Route path="/contact" element={<Contact />} />
       </Routes>
 
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
     </div>
   );

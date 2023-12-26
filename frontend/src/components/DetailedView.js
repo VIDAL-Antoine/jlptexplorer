@@ -31,7 +31,6 @@ const DetailedView = () => {
     fetchGrammarPoint();
   }, [jlptLevel, id]);
 
-
   return (
     <div>
     {(!grammarPoint) ?
@@ -43,41 +42,46 @@ const DetailedView = () => {
     ) : (
       <div className="container mt-4">
         <DetailedViewWrapper>
-        <header className="text-center py-3">
-          <h1><i className="bi bi-book-fill" style={{ color: '#000000' }}/> {grammarPoint.title}</h1>
-        </header>
+        <div className="d-flex align-items-center py-3 ms-2">
+          <i className="bi bi-book-fill" style={{ fontSize: '2rem', color: '#006400'}} />
+          <h1 className="ms-3">{grammarPoint.title}</h1>
+        </div>
         </DetailedViewWrapper>
 
-        <div style={{ display: 'flex' }}>
-        <DetailedViewWrapper style={{ flex: 1, marginRight: '30px' }}>
-          <i className="bi bi-translate" style={{ color: '#0000ff' }}/> {grammarPoint.englishTranslation}
-        </DetailedViewWrapper>
-        <DetailedViewWrapper>
-          <i className="bi bi-graph-up-arrow" style={{ color: '#00ff00' }}/> {grammarPoint.jlptLevel}
-        </DetailedViewWrapper>
+        <div className='d-flex'>
+          <DetailedViewWrapper className='d-flex align-items-center' style={{ flex: 1, marginRight: '30px' }}>
+            <i className="bi bi-translate ms-2" style={{ fontSize: '2rem', color: '#007BFF'}} />
+            <span className='ms-3' style={{ fontSize: '18px' }}>{grammarPoint.englishTranslation}</span>
+          </DetailedViewWrapper>
+          <DetailedViewWrapper className='d-flex align-items-center' style={{ textAlign: 'center' }}>
+            <i className="bi bi-graph-up-arrow" style={{ fontSize: '2rem', color: '#800080'}} />
+            <span className='ms-3' style={{ fontSize: '18px' }}>{grammarPoint.jlptLevel}</span>
+          </DetailedViewWrapper>
         </div>
 
         <DetailedViewWrapper>
-        <h3><i className='bi bi-chat-dots' style={{ color: '#ff9800' }} /> Examples</h3>
-        {grammarPoint.examples.map((example, index) => (
-          <div key={index} className="card mb-3">
-            <div className="card-body">
-              <p className="card-text">Sentence: {example.sentence}</p>
-              <p className="card-text">Source: {example.source}</p>
-              <p className="card-text text-center">
-                {/* Video URL: <a href={example.videoURL} target="_blank" rel="noopener noreferrer">{example.videoURL}</a> */}
-                <iframe
-                  width="560"
-                  height="315"
-                  src={example.videoURL} // https://www.youtube.com/embed/eI4an8aSsgw works
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </p>
+          <h3 className='mb-3 ms-2'>
+            <i className="bi bi-chat-dots" style={{ fontSize: '2rem', color: '#cc6600'}} />
+            <span className='ms-3'>Examples</span>
+          </h3>
+          {grammarPoint.examples.map((example, index) => (
+            <div key={index} className="card mb-3">
+              <div className="card-body">
+                <p className="card-text">Sentence: {example.sentence}</p>
+                <p className="card-text">Source: {example.source}</p>
+                <p className="card-text text-center">
+                  <iframe
+                    width="560"
+                    height="315"
+                    src={example.videoURL} // https://www.youtube.com/embed/eI4an8aSsgw works
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         </DetailedViewWrapper>
       </div>
     )}

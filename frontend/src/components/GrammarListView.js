@@ -15,7 +15,7 @@ const GrammarListViewWrapper = styled.div`
 
 const GrammarListView = () => {
   const { jlptLevel } = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +33,7 @@ const GrammarListView = () => {
 
   return (
     <div>
-    {data.length === 0 ? // if data is being fetched
+    {(!data) ? // if data is being fetched
     (
         <div className="d-flex justify-content-center align-items-center">
           <div className="spinner-border my-5" role="status">
