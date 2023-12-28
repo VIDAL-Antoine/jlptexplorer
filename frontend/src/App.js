@@ -14,11 +14,13 @@ const App = () => {
     <BrowserRouter>
       <Header />
 
+      <div className='main-content-container'>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:jlptLevel" element={<GrammarListView />} />
         <Route path="/:jlptLevel/:id" element={<DetailedView />} />
       </Routes>
+      </div>
 
       <Footer />
     </BrowserRouter>

@@ -7,6 +7,14 @@
   min-height: 100vh;
 }
 
+.main-content-container {
+  max-width: 1050px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
