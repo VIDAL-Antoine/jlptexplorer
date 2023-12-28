@@ -24,7 +24,7 @@ app.get('/api/grammar-points/:jlptLevel', async (req, res) => {
     await client.connect();
     const database = client.db("game_gramexplorer");
     const collection = database.collection(`grammar_points_${jlptLevel.toLowerCase()}`);
-    const documents = await collection.find({}).toArray();
+    const documents = await collection.find({}).sort({ title: 1 }).toArray();
     res.json(documents);
   } catch (error) {
     console.error('Error fetching data:', error);
