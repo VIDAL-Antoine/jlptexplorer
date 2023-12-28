@@ -3,13 +3,12 @@ import cors from 'cors';
 import { MongoClient, ServerApiVersion, ObjectId } from 'mongodb';
 
 const app = express();
-const port = 5000;
+const PORT = 5000;
+const MONGODBURI = process.env.MONGODB_URI;
 
 app.use(cors());
 
-const uri = process.env.MONGODB_URI;
-
-const client = new MongoClient(uri, {
+const client = new MongoClient(MONGODBURI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -22,7 +21,7 @@ app.get('/api/grammar-points/:jlptLevel', async (req, res) => {
   
   try {
     await client.connect();
-    const database = client.db("game_gramexplorer");
+    const database = client.db("jlptexplorer");
     const collection = database.collection(`grammar_points_${jlptLevel.toLowerCase()}`);
     const documents = await collection.find({}).sort({ title: 1 }).toArray();
     res.json(documents);
@@ -39,7 +38,7 @@ app.get('/api/grammar-points/:jlptLevel/:id', async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db('game_gramexplorer');
+    const database = client.db('jlptexplorer');
     const collection = database.collection(`grammar_points_${jlptLevel.toLowerCase()}`);
     const document = await collection.findOne({ _id: new ObjectId(id) });
 
@@ -56,6 +55,6 @@ app.get('/api/grammar-points/:jlptLevel/:id', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
