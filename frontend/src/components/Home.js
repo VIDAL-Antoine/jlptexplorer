@@ -22,7 +22,7 @@ const Home = () => {
 
     <HomeWrapper className='mx-4'>
       <p className="lead mx-3">Your go-to resource for exploring Japanese Language Proficiency Test (JLPT) grammar points using examples from video games. Dive into the world of language learning and gaming with us!</p>
-      <p className="lead mx-3">Choose a JLPT level and select the grammar point you want to know about. "Unclassified" corresponds to grammar points that are not in the JLPT but are rather common and important to know.</p>
+      <p className="lead mx-3">Choose a JLPT level and select the grammar point you want to know about.</p>
     </HomeWrapper>
 
     <HomeWrapper className='mx-4'>

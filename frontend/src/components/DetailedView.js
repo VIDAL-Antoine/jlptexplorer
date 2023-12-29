@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import styled from 'styled-components';
+import { Collapse, Button } from 'react-bootstrap';
 
 const DetailedViewWrapper = styled.div`
   background-color: white;
@@ -16,6 +17,7 @@ const DetailedViewWrapper = styled.div`
 const DetailedView = () => {
   const { id, jlptLevel } = useParams();
   const [grammarPoint, setGrammarPoint] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchGrammarPoint = async () => {
@@ -66,7 +68,13 @@ const DetailedView = () => {
               <div key={index} className="card mb-4">
                 <div className="card-body">
                   <p className="card-text">Sentence: {example.sentence}</p>
-                  <p className="card-text">Source: {example.source}</p>
+
+                  <Button onClick={() => setIsOpen(!isOpen)} variant="primary" size="sm">Sentence translation</Button>
+                  <Collapse in={isOpen} className='mt-2'>
+                    <p>{example.sentenceTranslation}</p>
+                  </Collapse>
+
+                  <p className="card-text mt-3">Source: {example.source}</p>
                   <div className="embed-responsive embed-responsive-16by9" style={{ maxWidth: '1024px', width: '100%', margin: 'auto' }} >
                     <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
                       <iframe
