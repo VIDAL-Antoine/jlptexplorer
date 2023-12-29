@@ -55,7 +55,7 @@ const GrammarListView = () => {
             {data.map((item) => 
                 <tr key={item._id} className="border-top">
                   <td><Link to={`/${jlptLevel}/${item._id}`} className="list-group-item list-group-item-action">{item.title}</Link></td>
-                  <td style={{ textAlign: 'right' }}>{item.englishTranslation}</td>
+                  <td style={{ textAlign: 'right' }}>{item.titleTranslation}</td>
                 </tr>
             )}
             </tbody>

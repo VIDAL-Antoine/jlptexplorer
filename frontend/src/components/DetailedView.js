@@ -51,7 +51,7 @@ const DetailedView = () => {
           <div className='d-flex'>
             <DetailedViewWrapper className='d-flex align-items-center' style={{ flex: 1, marginRight: '30px' }}>
               <i className="bi bi-translate ms-2" style={{ fontSize: '2rem', color: '#007BFF'}} />
-              <span className='ms-3' style={{ fontSize: '18px' }}>{grammarPoint.englishTranslation}</span>
+              <span className='ms-3' style={{ fontSize: '18px' }}>{grammarPoint.titleTranslation}</span>
             </DetailedViewWrapper>
             <DetailedViewWrapper className='d-flex align-items-center' style={{ textAlign: 'center' }}>
               <i className="bi bi-graph-up-arrow ms-2" style={{ fontSize: '2rem', color: '#800080'}} />
