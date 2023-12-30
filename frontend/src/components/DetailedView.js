@@ -16,7 +16,7 @@ const DetailedViewWrapper = styled.div`
 
 const DetailedView = () => {
   const { id, jlptLevel } = useParams();
-  const [grammarPoint, setGrammarPoint] = useState(null);
+  const [grammarPoint, setGrammarPoint] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const DetailedView = () => {
 
   return (
     <div>
-      {(!grammarPoint) ? (
+      {(grammarPoint.length === 0) ? (
         <div className="d-flex justify-content-center align-items-center">
           <div className="spinner-border my-5" role="status"></div>
         </div>
