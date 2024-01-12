@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, CardBody, CardTitle, Table } from 'reactstrap';
 import styled from 'styled-components';
+import './GrammarListView.css'
 
 const GrammarListViewWrapper = styled.div`
   background-color: white;
